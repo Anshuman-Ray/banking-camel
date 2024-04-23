@@ -3,7 +3,9 @@ package com.example.camelController.routes;
 import com.example.camelController.processors.CustomerProcessor;
 import com.example.camelController.processors.HeaderProcessor;
 import lombok.RequiredArgsConstructor;
+import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.model.Constants;
 import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +23,7 @@ public class CustomerRoute extends RouteBuilder {
         from("servlet:/api/v1/customers?httpMethodRestrict=POST")
                 .process(customerProcessor)
                 .process(headerProcessor)
+                .setHeader(Exchange.HTTP_METHOD, constant("POST"))
                 .marshal().json(JsonLibrary.Jackson)
                 .to("http://localhost:8443/fineract-provider/api/v1/clients?bridgeEndpoint=true");
     }

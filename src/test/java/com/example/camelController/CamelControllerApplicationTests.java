@@ -9,5 +9,4 @@ class CamelControllerApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
