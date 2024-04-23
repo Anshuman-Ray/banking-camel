@@ -20,7 +20,6 @@ public class HeaderProcessor implements Processor {
         String auth = superUsername + ":" + superUserPassword;
         byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes());
         String authHeader = "Basic " + new String(encodedAuth);
-        exchange.getIn().setHeader(Exchange.HTTP_METHOD, "POST");
         exchange.getIn().setHeader("Authorization", authHeader);
         exchange.getIn().setHeader("Accept", "application/json, text/plain, */*");
         exchange.getIn().setHeader("Accept-Language", "en-US,en;q=0.9,hi;q=0.8");
