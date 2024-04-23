@@ -22,16 +22,21 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.apache.camel.springboot:camel-spring-boot-starter:4.5.0'
 	implementation 'org.apache.camel.springboot:camel-servlet-starter:4.5.0'
 	implementation 'org.apache.camel:camel-http:4.5.0'
 	implementation 'org.apache.camel:camel-jackson:4.5.0'
+	runtimeOnly 'org.postgresql:postgresql'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
 	testImplementation 'org.apache.camel:camel-test-spring-junit5:3.0.0-RC2'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
 }
 
 tasks.named('test') {
